@@ -1,32 +1,28 @@
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1200  // 600
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 35    // 10
+
 #include <input/processors.dtsi>
+#include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
-#include <dt-bindings/zmk/ext_power.h>
-#include <dt-bindings/zmk/rgb.h>
-#include <zephyr/dt-bindings/input/input-event-codes.h>
 
 / {
-  zip_scroll_scaler: zip_scroll_scaler {
-    compatible = "zmk,input-processor-scaler";
-    #input-processor-cells = <2>;
-    type = <INPUT_EV_REL>;
-    codes = <INPUT_REL_WHEEL INPUT_REL_HWHEEL>;
-    track-remainders;
-  };
+    zip_scroll_scaler: zip_scroll_scaler {
+        compatible = "zmk,input-processor-scaler";
+        #input-processor-cells = <2>;
+        type = <INPUT_EV_REL>;
+        codes = <INPUT_REL_WHEEL INPUT_REL_HWHEEL>;
+        track-remainders;
+    };
 };
 
-&mmv_input_listener {
-       input-processors = <&zip_xy_scaler 2 1>;
-};
+&mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; };
 
-&msc_input_listener {
-       input-processors = <&zip_scroll_scaler 2 1>;
-};
+&msc_input_listener { input-processors = <&zip_scroll_scaler 2 1>; };
 
 &msc {
     acceleration-exponent = <0>;      // 0
@@ -40,8 +36,6 @@
     trigger-period-ms = <16>;
 };
 
-
-
 / {
     scroll_encoder: scroll_encoder {
         compatible = "zmk,behavior-sensor-rotate";
@@ -50,7 +44,6 @@
 
         tap-ms = <30>;
     };
-
 
     gui_and_lay1: gui_and_lay1 {
         compatible = "zmk,behavior-tap-dance";
@@ -93,7 +86,7 @@
         compatible = "zmk,behavior-tap-dance";
         label = "LAY2_AND_ALT";
         #binding-cells = <0>;
-        bindings = <&mo 2>, <&kp LEFT_ALT>, <&kp LS(LEFT_ALT)>;
+        bindings = <&mo 4>, <&kp LEFT_ALT>, <&kp LS(LEFT_ALT)>;
 
         tapping-term-ms = <230>;
     };
@@ -102,7 +95,7 @@
         compatible = "zmk,behavior-tap-dance";
         label = "LAYER_3_TD";
         #binding-cells = <0>;
-        bindings = <&mo 3>, <&mo 2>, <&tog 3>;
+        bindings = <&mo 3>, <&mo 4>, <&tog 3>;
 
         tapping-term-ms = <250>;
     };
@@ -129,7 +122,7 @@
         compatible = "zmk,behavior-tap-dance";
         label = "LAY2_TD";
         #binding-cells = <0>;
-        bindings = <&mo 2>, <&mo 3>, <&tog 3>;
+        bindings = <&mo 4>, <&mo 3>, <&tog 3>;
 
         tapping-term-ms = <250>;
     };
@@ -284,17 +277,16 @@
         };
     };
 
-
     keymap {
         compatible = "zmk,keymap";
 
         layer0 {
             bindings = <
-&Lay2_TD    &kp N1         &kp N2         &kp N3         &kp N4      &kp N5           &kp UP_ARROW     &kp N6            &kp N7         &kp N8     &kp N9         &kp N0  &lay2_and_alt
-&kp ENTER   &kp SQT        &kp COMMA      &kp PERIOD     &kp P       &kp Y            &kp DOWN_ARROW   &kp F             &kp G          &kp C      &kp R          &kp L   &kp ESCAPE
-&kp ESCAPE  &kp A          &kp O          &kp E          &kp U       &kp I            &kp LEFT_ARROW   &kp D             &kp H          &kp T      &kp N          &kp S   &kp MINUS
-&kp TAB     &kp SEMICOLON  &kp Q          &kp J          &kp K       &kp X            &kp RIGHT_ARROW  &kp B             &kp M          &kp W      &kp V          &kp Z   &kp EQUAL
-&kp C_MUTE  &none          &lay3_and_alt  &kp BACKSPACE  &shft_mod1  &gui_and_lay1    &kp ENTER        &cntrl_andlayer1  &mod_low_shft  &kp SPACE  &ALT_AND_BASE  &none
+&Lay2_TD    &kp N1         &kp N2         &kp N3      &kp N4         &kp N5    &kp UP_ARROW     &kp N6  &kp N7            &kp N8         &kp N9     &kp N0         &lay2_and_alt
+&kp ENTER   &kp SQT        &kp COMMA      &kp PERIOD  &kp P          &kp Y     &kp DOWN_ARROW   &kp F   &kp G             &kp C          &kp R      &kp L          &kp ESCAPE
+&kp ESCAPE  &kp A          &kp O          &kp E       &kp U          &kp I     &kp LEFT_ARROW   &kp D   &kp H             &kp T          &kp N      &kp S          &kp MINUS
+&kp TAB     &kp SEMICOLON  &kp Q          &kp J       &kp K          &kp X     &kp RIGHT_ARROW  &kp B   &kp M             &kp W          &kp V      &kp Z          &kp EQUAL
+&kp C_MUTE  &lay3_and_alt  &kp BACKSPACE  &shft_mod1  &gui_and_lay1  &none     &kp ENTER        &none   &cntrl_andlayer1  &mod_low_shft  &kp SPACE  &ALT_AND_BASE
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
@@ -314,7 +306,33 @@
             sensor-bindings = <&scroll_encoder>;
         };
 
-        layer_2 {
+        layer_4 {
+            display-name = "layer3";
+            bindings = <
+&bt BT_CLR_ALL  &mkp RCLK      &trans       &trans             &out OUT_TOG     &ext_power EP_TOG    &trans  &ext_power EP_ON  &ext_power EP_TOG  &trans         &trans         &trans         &trans
+&kp F1          &kp F2         &kp F3       &kp F4             &kp F5           &kp F6               &trans  &kp F7            &kp F8             &kp F9         &kp F10        &kp F11        &kp F12
+&trans          &kp PAGE_DOWN  &kp PAGE_UP  &kp K_PREVIOUS     &kp K_NEXT       &kp K_PLAY_PAUSE     &trans  &out OUT_USB      &trans             &bt BT_DISC 3  &bt BT_DISC 2  &bt BT_DISC 1  &bt BT_DISC 0
+&bt BT_CLR      &bt BT_NXT     &trans       &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp K_MUTE           &trans  &trans            &trans             &bt BT_SEL 3   &bt BT_SEL 2   &bt BT_SEL 1   &bt BT_SEL 0
+&trans          &trans         &kp F9       &trans             &trans           &trans               &trans  &trans            &trans             &trans         &trans         &trans
+            >;
+
+            sensor-bindings = <&scroll_encoder>;
+        };
+
+        layer_3 {
+            bindings = <
+&mkp MB1  &mkp RCLK  &trans     &trans     &trans   &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&kp F6    &kp N1     &kp N3     &kp N5     &kp F10  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&kp F1    &kp F2     &kp F3     &kp F4     &kp F5   &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&mkp MB1  &kp SPACE  &kp LSHFT  &kp LCTRL  &trans   &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans    &trans     &kp F9     &trans     &trans   &trans    &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+
+            display-name = "layer3";
+            sensor-bindings = <&scroll_encoder>;
+        };
+
+        layer_5 {
             bindings = <
 &bt BT_CLR_ALL  &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &mmv MOVE_UP     &kp F6  &kp F7  &kp F8      &kp F9     &kp F10      &trans
 &trans          &bt BT_CLR    &bt BT_CLR_ALL  &trans        &trans        &trans          &mmv MOVE_DOWN   &trans  &trans  &kp F11     &kp F12    &kp UNDER    &kp PLUS
@@ -325,19 +343,7 @@
 
             display-name = "layer2";
             sensor-bindings = <&scroll_encoder>;
-        };
-
-        layer_3 {
-            bindings = <
-&trans  &trans     &trans     &trans     &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp N1     &kp N3     &kp N5     &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans     &trans     &trans     &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp SPACE  &kp LSHFT  &kp LCTRL  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans     &trans     &trans     &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-            >;
-
-            display-name = "layer3";
-            sensor-bindings = <&scroll_encoder>;
+            label = "5";
         };
     };
 };
