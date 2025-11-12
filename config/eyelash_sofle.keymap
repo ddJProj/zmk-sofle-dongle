@@ -95,7 +95,7 @@
         compatible = "zmk,behavior-tap-dance";
         label = "LAYER_3_TD";
         #binding-cells = <0>;
-        bindings = <&mo 3>, <&mo 0>, <&tog 3>;
+        bindings = <&mo 3>, <&mo 2>, <&tog 3>;
 
         tapping-term-ms = <250>;
     };
