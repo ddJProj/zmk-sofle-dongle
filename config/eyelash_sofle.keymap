@@ -86,7 +86,7 @@
         compatible = "zmk,behavior-tap-dance";
         label = "LAY2_AND_ALT";
         #binding-cells = <0>;
-        bindings = <&mo 0>, <&kp LEFT_ALT>, <&kp LS(LEFT_ALT)>;
+        bindings = <&mo 2>, <&kp LEFT_ALT>, <&kp LS(LEFT_ALT)>;
 
         tapping-term-ms = <230>;
     };
@@ -122,7 +122,7 @@
         compatible = "zmk,behavior-tap-dance";
         label = "LAY2_TD";
         #binding-cells = <0>;
-        bindings = <&mo 0>, <&mo 3>, <&tog 3>;
+        bindings = <&mo 2>, <&mo 3>, <&tog 3>;
 
         tapping-term-ms = <250>;
     };
