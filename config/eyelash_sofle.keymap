@@ -86,7 +86,7 @@
         compatible = "zmk,behavior-tap-dance";
         label = "LAY2_AND_ALT";
         #binding-cells = <0>;
-        bindings = <&mo 4>, <&kp LEFT_ALT>, <&kp LS(LEFT_ALT)>;
+        bindings = <&mo 0>, <&kp LEFT_ALT>, <&kp LS(LEFT_ALT)>;
 
         tapping-term-ms = <230>;
     };
@@ -95,7 +95,7 @@
         compatible = "zmk,behavior-tap-dance";
         label = "LAYER_3_TD";
         #binding-cells = <0>;
-        bindings = <&mo 3>, <&mo 4>, <&tog 3>;
+        bindings = <&mo 3>, <&mo 0>, <&tog 3>;
 
         tapping-term-ms = <250>;
     };
@@ -122,7 +122,7 @@
         compatible = "zmk,behavior-tap-dance";
         label = "LAY2_TD";
         #binding-cells = <0>;
-        bindings = <&mo 4>, <&mo 3>, <&tog 3>;
+        bindings = <&mo 0>, <&mo 3>, <&tog 3>;
 
         tapping-term-ms = <250>;
     };
@@ -306,7 +306,7 @@
             sensor-bindings = <&scroll_encoder>;
         };
 
-        layer_4 {
+        layer_2 {
             display-name = "layer3";
             bindings = <
 &bt BT_CLR_ALL  &mkp RCLK      &trans       &trans             &out OUT_TOG     &ext_power EP_TOG    &trans  &ext_power EP_ON  &ext_power EP_TOG  &trans         &trans         &trans         &trans
@@ -330,20 +330,6 @@
 
             display-name = "layer3";
             sensor-bindings = <&scroll_encoder>;
-        };
-
-        layer_5 {
-            bindings = <
-&bt BT_CLR_ALL  &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &mmv MOVE_UP     &kp F6  &kp F7  &kp F8      &kp F9     &kp F10      &trans
-&trans          &bt BT_CLR    &bt BT_CLR_ALL  &trans        &trans        &trans          &mmv MOVE_DOWN   &trans  &trans  &kp F11     &kp F12    &kp UNDER    &kp PLUS
-&trans          &out OUT_USB  &out OUT_BLE    &trans        &trans        &trans          &mmv MOVE_LEFT   &trans  &trans  &trans      &trans     &kp LBRC     &kp RBRC
-&bt BT_CLR      &bt BT_NXT    &trans          &bootloader   &trans        &trans          &mmv MOVE_RIGHT  &trans  &trans  &sys_reset  &soft_off  &bootloader  &trans
-&trans          &trans        &trans          &trans        &trans        &trans          &mkp LCLK        &trans  &trans  &trans      &trans     &trans
-            >;
-
-            display-name = "layer2";
-            sensor-bindings = <&scroll_encoder>;
-            label = "5";
         };
     };
 };
