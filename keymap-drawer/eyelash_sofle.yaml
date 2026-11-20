@@ -1,7 +1,7 @@
 layout: {zmk_keyboard: eyelash_sofle}
 layers:
   LAYER0:
-  - '&Lay2_TD'
+  - {t: '`', s: '~'}
   - {t: '1', s: '!'}
   - {t: '2', s: '@'}
   - {t: '3', s: '#'}
@@ -58,7 +58,7 @@ layers:
   - {t: '$$mdi:backspace$$', type: backspace}
   - '&shft_mod1'
   - '&gui_and_lay1'
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - $$mdi:keyboard-space$$
   - {t: '$$mdi:keyboard-return$$', type: enter}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - '&cntrl_andlayer1'
@@ -209,12 +209,12 @@ layers:
   - RGB HUI
   - RGB HUD
   - {t: '$$mdi:transfer$$', type: trans}
+  - F1
+  - F2
+  - F3
+  - F4
+  - F5
   - F6
-  - {t: '1', s: '!'}
-  - {t: '3', s: '#'}
-  - {t: '5', s: '%'}
-  - F10
-  - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - RGB SAI
   - RGB SAD
@@ -222,12 +222,12 @@ layers:
   - RGB BRD
   - RGB SPI
   - '&bl BL_TOG'
-  - F1
-  - F2
-  - F3
-  - F4
-  - F5
-  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '''', s: '"'}
+  - {t: ',', s: <}
+  - .
+  - F7
+  - F8
+  - F9
   - {t: '$$mdi:transfer$$', type: trans}
   - RGB EFF
   - RGB EFR
@@ -235,9 +235,9 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - RGB SPD
   - '&bl BL_CYCLE'
-  - '&mkp MB1'
-  - $$mdi:keyboard-space$$
-  - $$mdi:apple-keyboard-shift$$
+  - A
+  - O
+  - E
   - $$mdi:apple-keyboard-control$$
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
@@ -250,7 +250,7 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - F9
+  - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
@@ -261,5 +261,7 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
 combos:
+- p: [14, 28, 40]
+  k: '&soft_off'
 - p: [14, 28, 40]
   k: '&soft_off'
