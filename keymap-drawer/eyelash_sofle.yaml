@@ -209,12 +209,12 @@ layers:
   - RGB HUI
   - RGB HUD
   - {t: '$$mdi:transfer$$', type: trans}
-  - F1
-  - F2
-  - F3
-  - F4
-  - F5
   - F6
+  - {t: '1', s: '!'}
+  - {t: '3', s: '#'}
+  - {t: '5', s: '%'}
+  - F10
+  - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - RGB SAI
   - RGB SAD
@@ -222,12 +222,12 @@ layers:
   - RGB BRD
   - RGB SPI
   - '&bl BL_TOG'
-  - {t: '''', s: '"'}
-  - {t: ',', s: <}
-  - .
-  - F7
-  - F8
-  - F9
+  - F1
+  - F2
+  - F3
+  - F4
+  - F5
+  - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - RGB EFF
   - RGB EFR
@@ -235,9 +235,9 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - RGB SPD
   - '&bl BL_CYCLE'
-  - A
-  - O
-  - E
+  - '&mkp MB1'
+  - $$mdi:keyboard-space$$
+  - $$mdi:apple-keyboard-shift$$
   - $$mdi:apple-keyboard-control$$
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
@@ -250,7 +250,7 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
+  - F9
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
